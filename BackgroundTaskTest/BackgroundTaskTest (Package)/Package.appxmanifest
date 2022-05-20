@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  IgnorableNamespaces="uap rescap">
+
+	<Identity
+	  Name="be8148e0-ba13-4607-b5e0-b87121b1aacb"
+	  Publisher="CN=mqudsi"
+	  Version="1.0.4.0" />
+
+	<Properties>
+		<DisplayName>BackgroundTaskTest (Package)</DisplayName>
+		<PublisherDisplayName>Mahmoud</PublisherDisplayName>
+		<Logo>Images\StoreLogo.png</Logo>
+	</Properties>
+
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+	</Dependencies>
+
+	<Resources>
+		<Resource Language="x-generate"/>
+	</Resources>
+
+	<Applications>
+		<Application Id="App"
+		  Executable="$targetnametoken$.exe"
+		  EntryPoint="$targetentrypoint$">
+			<uap:VisualElements
+			  DisplayName="BackgroundTaskTest (Package)"
+			  Description="BackgroundTaskTest (Package)"
+			  BackgroundColor="transparent"
+			  Square150x150Logo="Images\Square150x150Logo.png"
+			  Square44x44Logo="Images\Square44x44Logo.png">
+				<uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
+				<uap:SplashScreen Image="Images\SplashScreen.png" />
+			</uap:VisualElements>
+
+			<Extensions>
+				<!-- Register a COM32 server CLSID for handling background activation -->
+				<com:Extension Category="windows.comServer">
+					<com:ComServer>
+						<com:ExeServer Executable="BackgroundTaskTest\BackgroundTaskTest.exe" Arguments="-ComBackgroundActivated" DisplayName="Background Activator">
+							<!-- this CLSID is taken from BackgroundTaskTest::BackgroundTask -->
+							<com:Class Id="A8082001-73F7-4607-8521-60F03476E462" DisplayName="Notification Scheduler"/>
+						</com:ExeServer>
+					</com:ComServer>
+				</com:Extension>
+			</Extensions>
+		</Application>
+	</Applications>
+
+	<Capabilities>
+		<rescap:Capability Name="runFullTrust" />
+	</Capabilities>
+</Package>

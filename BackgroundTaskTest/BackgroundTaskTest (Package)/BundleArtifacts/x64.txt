@@ -1,0 +1,2 @@
+MainPackage=D:\GIT\BackgroundTaskTest\BackgroundTaskTest\BackgroundTaskTest (Package)\bin\x64\Release\BackgroundTaskTest (Package)_1.0.4.0_x64.msix
+SymbolPackage=D:\GIT\BackgroundTaskTest\BackgroundTaskTest\BackgroundTaskTest (Package)\obj\x64\Release\Symbols\BackgroundTaskTest (Package)_1.0.4.0_x64.appxsym
